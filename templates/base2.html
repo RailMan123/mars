@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        <h1>Миссия Колонизация Марса</h1>
+        <h4>И на Марсе будут яблони цвести!</h4>
+        {% if prof == 'инженер' or prof == 'строитель' %}
+            <center>
+                <h1 align="center">Инженерные тренажеры</h1>
+                <img src="/static/img/itStarship.jpg" align="center">
+            </center>
+        {% else %}
+             <center>
+                <h1 align="center">Научные симуляторы</h1>
+                <img src="/static/img/nsStarship.jpg" align="center">
+             </center>>
+        {% endif %}
+    </body>
+</html>

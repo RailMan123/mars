@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+        <style>
+            .os {
+             margin-left: 5%; /* Отступ слева */
+            }
+        </style>
+    </head>
+    <body>
+        {% if list == 'ol' or list == 'ul' %}
+            <h1>Миссия Колонизация Марса</h1>
+            <h4>И на Марсе будут яблони цвести!</h4>
+            <h2 class="os">Cписок профессий</h2>
+            {% if list == 'ol' %}
+                <ol class="os">
+                    {% for profession in profs %}
+                    <li>{{ profession }}
+                    </li>
+                    {% endfor %}
+                </ol>
+            {% else %}
+                <ul class="os">
+                    {% for profession in profs %}
+                    <li>{{ profession }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% else %}
+             <h1 align="center">НЕВЕРНЫЙ ПАРАМЕТР ЗАПРОСА</h1>
+        {% endif %}
+    </body>
+</html>
