@@ -7,7 +7,7 @@ from flask import Flask, url_for, render_template, request
 
 app = Flask(__name__)
 params = {}
-
+car_imgs = ['mars1.jpeg', 'mars2.jpeg', 'mars3.jpg', 'mars2.jpg']
 @app.route('/<title_name>')
 @app.route('/index/<title_name>')
 def index(title_name):
@@ -53,6 +53,20 @@ def auto_answer():
         else:
             params['ready'] = 'False'
         return "Отправлено, теперь перейдите на /answer"
+
+@app.route('/galery', methods=['POST', 'GET'])
+def carousel():
+    global car_imgs
+    if request.method == 'GET':
+        return render_template('carousel.html', title='Красная планета', car_imgs=car_imgs, count=len(car_imgs))
+
+    elif request.method == 'POST':
+        f = request.files['file']
+        map_file = f"static/img/mars{len(car_imgs) + 1}.jpg"
+        with open(map_file, "wb") as file:
+            file.write(f.read())
+        car_imgs.append(f'mars{len(car_imgs) + 1}.jpg')
+        return render_template('carousel.html', title='Красная планета', car_imgs=car_imgs, count=len(car_imgs))
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')

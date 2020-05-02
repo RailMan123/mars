@@ -5,3 +5,7 @@ h4{
 p{
     padding-left: 90px;
 }
+form.login_form {
+    max-width: 450px;
+    padding: 10px;
+}
