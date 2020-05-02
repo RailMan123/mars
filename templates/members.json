@@ -1,0 +1,37 @@
+{
+  "all_members": [
+    {
+      "name": "Molecule",
+      "surname": "Man",
+      "age": 29,
+      "professions": [
+        "Astrologist",
+        "Fire fighter",
+        "Security guard"
+      ],
+      "photo": "Molecule_Man.jpg"
+    },
+    {
+      "name": "Star",
+      "surname": "Platinum",
+      "age": 39,
+      "professions": [
+        "Biologist",
+        "Selector",
+        "Archeologist"
+      ],
+      "photo": "Star_Platinum.jpg"
+    },
+    {
+      "name": "King",
+      "surname": "Krimson",
+      "age": 22,
+      "professions": [
+        "Builder",
+        "IT Specialist",
+        "SYS_Admin"
+      ],
+      "photo": "King_Krimson.jpg"
+    }
+  ]
+}

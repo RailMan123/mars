@@ -1,13 +1,16 @@
+import random
 import sys
 import requests
 import pygame
 import os
 import math
-from flask import Flask, url_for, render_template, request
+from flask import Flask, url_for, render_template, request, json
 
 app = Flask(__name__)
 params = {}
 car_imgs = ['mars1.jpeg', 'mars2.jpeg', 'mars3.jpg', 'mars2.jpg']
+
+
 @app.route('/<title_name>')
 @app.route('/index/<title_name>')
 def index(title_name):
@@ -28,7 +31,7 @@ def Distrib():
 @app.route('/table/<category>/<int:age>', methods=["GET", "POST"])
 def customize(category, age):
     print(category, age)
-    return render_template('customize.html', params=[age,category])
+    return render_template('customize.html', params=[age, category])
 
 
 @app.route('/answer')
@@ -54,6 +57,7 @@ def auto_answer():
             params['ready'] = 'False'
         return "Отправлено, теперь перейдите на /answer"
 
+
 @app.route('/galery', methods=['POST', 'GET'])
 def carousel():
     global car_imgs
@@ -67,6 +71,18 @@ def carousel():
             file.write(f.read())
         car_imgs.append(f'mars{len(car_imgs) + 1}.jpg')
         return render_template('carousel.html', title='Красная планета', car_imgs=car_imgs, count=len(car_imgs))
+
+
+@app.route('/member', methods=['POST', 'GET'])
+def member_card():
+    with open("templates/members.json", "r", encoding="utf-8") as read_file:
+        data = json.load(read_file)
+        data = data["all_members"][random.randint(0, len(data['all_members']) - 1)]
+        name = data["name"] + ' ' + data["surname"]
+        photo = data["photo"]
+        prof = sorted(data["professions"])
+    return render_template('member_card.html', datas=[name, photo, ", ".join(prof)])
+
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
