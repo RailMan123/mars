@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 align="center">Оформление каюты</h1>
+
+<center>
+    <table width="90%" cellspacing="0" allign="center">
+        <tr>
+            <td align="center" bgcolor="#A9A9A9">Цвет стен</td>
+            <td align="center" bgcolor="#A9A9A9">Эмблема</td>
+        </tr>
+        {% if params[1] == "male" %}
+            {% if params[0] < 21 %}
+                <tr>
+                    <td bgcolor="#7FFFD4" height="200%" width="45%"></td>
+                    <td><img src="/static/img/sMars.png" width="100%" height="200%"></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td bgcolor="#0000FF" height="200%" width="45%"></td>
+                    <td><img src="/static/img/bMars.jpg" width="100%" height="200%"></td>
+                </tr>
+            {% endif %}
+
+        {% elif params[1] == "female" %}
+            {% if params[0] < 21 %}
+                <tr>
+                    <td bgcolor="#F4A460" height="200%" width="45%"></td>
+                    <td><img src="/static/img/sMars.png" width="100%" height="200%"></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td bgcolor="#D2691E" height="200%" width="45%"></td>
+                    <td><img src="/static/img/bMars.jpg" width="100%" height="200%"></td>
+                </tr>
+            {% endif %}
+
+        {% endif %}
+    </table>
+</center>
+{% endblock %}

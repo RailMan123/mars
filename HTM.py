@@ -25,6 +25,10 @@ def Distrib():
     return render_template('spisok.html', profs=profs)
 
 
+@app.route('/table/<category>/<int:age>', methods=["GET", "POST"])
+def customize(category, age):
+    print(category, age)
+    return render_template('customize.html', params=[age,category])
 
 
 @app.route('/answer')
